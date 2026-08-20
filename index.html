@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Gym Tracker</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,14 +15,15 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0b0f14;
-    color: #fff;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #080c11;
+    color: white;
 }
 
-button, input, select {
-    font: inherit;
+button,
+input,
+select {
+    font-family: inherit;
 }
 
 .app {
@@ -33,20 +36,18 @@ button, input, select {
 /* HEADER */
 
 header {
-    padding: 25px 20px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 25px 18px 15px;
 }
 
 .logo {
-    font-size: 23px;
+    font-size: 24px;
     font-weight: 800;
 }
 
 .week {
+    color: #8993a1;
     font-size: 12px;
-    color: #8e98a7;
+    margin-top: 5px;
 }
 
 /* RESUMEN */
@@ -60,15 +61,15 @@ header {
     justify-content: space-between;
 }
 
-.summary-item span {
+.summary span {
     display: block;
-    color: #8e98a7;
+    color: #8993a1;
     font-size: 12px;
     margin-bottom: 5px;
 }
 
-.summary-item strong {
-    font-size: 21px;
+.summary strong {
+    font-size: 22px;
 }
 
 /* CONTENIDO */
@@ -78,24 +79,19 @@ header {
 }
 
 .section-title {
-    font-size: 17px;
-    font-weight: 700;
-    margin: 10px 0 14px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 14px;
 }
 
 /* MUSCULOS */
 
 .muscle-card {
     background: #151b23;
-    border-radius: 17px;
     padding: 16px;
+    border-radius: 17px;
     margin-bottom: 11px;
     cursor: pointer;
-    transition: .2s;
-}
-
-.muscle-card:active {
-    transform: scale(.98);
 }
 
 .muscle-top {
@@ -108,30 +104,30 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .icon {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 10px;
+    background: #202832;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #202833;
 }
 
 .muscle-count {
-    color: #9ca6b4;
+    color: #9ba5b3;
     font-size: 13px;
 }
 
 .progress {
     height: 8px;
-    background: #242c36;
+    background: #252d37;
     border-radius: 20px;
-    overflow: hidden;
     margin-top: 13px;
+    overflow: hidden;
 }
 
 .progress-bar {
@@ -141,22 +137,23 @@ header {
 }
 
 .progress-text {
-    text-align: right;
-    margin-top: 6px;
-    color: #8e98a7;
+    color: #8b95a3;
     font-size: 11px;
+    text-align: right;
+    margin-top: 5px;
 }
 
-/* BOTON */
+/* BOTONES */
 
 .primary-btn {
     width: 100%;
+    padding: 15px;
     border: none;
     border-radius: 14px;
-    padding: 15px;
     background: #2878f0;
     color: white;
-    font-weight: 700;
+    font-weight: bold;
+    font-size: 15px;
     cursor: pointer;
     margin-top: 10px;
 }
@@ -175,7 +172,7 @@ header {
     display: block;
 }
 
-/* TITULO */
+/* HEADER INTERNO */
 
 .page-header {
     display: flex;
@@ -184,21 +181,22 @@ header {
     padding: 22px 18px;
 }
 
-.back {
-    background: #151b23;
-    border: none;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
 .page-header h2 {
     font-size: 21px;
 }
 
-/* FORMULARIOS */
+.back {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: #151b23;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* FORMULARIO */
 
 .form {
     padding: 0 18px;
@@ -206,22 +204,24 @@ header {
 
 label {
     display: block;
+    color: #9ba5b3;
     font-size: 13px;
-    color: #aab3c0;
-    margin: 15px 0 7px;
+    margin: 17px 0 7px;
 }
 
-input, select {
+input,
+select {
     width: 100%;
-    background: #151b23;
-    border: 1px solid #28313d;
-    color: white;
     padding: 14px;
+    background: #151b23;
+    color: white;
+    border: 1px solid #29323d;
     border-radius: 12px;
     outline: none;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
     border-color: #2878f0;
 }
 
@@ -241,7 +241,7 @@ input:focus, select:focus {
 }
 
 .exercise-name {
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .exercise-series {
@@ -249,46 +249,46 @@ input:focus, select:focus {
     font-size: 13px;
 }
 
-.delete {
-    background: none;
-    border: none;
-    color: #ff5252;
-    cursor: pointer;
-}
-
-/* REGISTRO */
+/* ESTADISTICAS EJERCICIO */
 
 .stats-box {
     background: #151b23;
+    margin: 0 18px 18px;
     padding: 18px;
     border-radius: 16px;
-    margin: 0 18px 18px;
     display: flex;
     justify-content: space-between;
 }
 
 .stats-box span {
-    color: #8e98a7;
-    font-size: 12px;
+    display: block;
+    color: #8993a1;
+    font-size: 11px;
 }
 
 .stats-box strong {
     display: block;
+    font-size: 19px;
     margin-top: 5px;
-    font-size: 20px;
 }
+
+.green {
+    color: #55d66f;
+}
+
+/* SERIES */
 
 .set-header,
 .set-row {
     display: grid;
-    grid-template-columns: 45px 1fr 1fr 35px;
+    grid-template-columns: 42px 1fr 1fr 30px;
     gap: 7px;
     align-items: center;
 }
 
 .set-header {
-    padding: 0 18px 8px;
-    color: #7e8896;
+    padding: 0 18px 7px;
+    color: #8993a1;
     font-size: 11px;
 }
 
@@ -311,10 +311,11 @@ input:focus, select:focus {
 .delete-set {
     border: none;
     background: none;
-    color: #ff4d4d;
-    font-size: 18px;
-    cursor: pointer;
+    color: #ff5050;
+    font-size: 20px;
 }
+
+/* TOTAL */
 
 .total-box {
     margin: 15px 18px;
@@ -326,230 +327,311 @@ input:focus, select:focus {
 
 .remaining {
     color: #55d66f;
-    font-weight: 700;
 }
 
-/* MODAL */
-
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.7);
-    display: none;
-    align-items: flex-end;
-    justify-content: center;
-    z-index: 10;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-box {
-    width: 100%;
-    max-width: 520px;
-    background: #11161d;
-    border-radius: 25px 25px 0 0;
-    padding: 25px 20px;
-}
-
-.modal-box h3 {
-    margin-bottom: 15px;
-}
-
-.close-modal {
-    float: right;
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 25px;
-}
-
-/* MENSAJE */
+/* MENSAJES */
 
 .empty {
     text-align: center;
-    color: #7e8896;
+    color: #8993a1;
     padding: 30px 10px;
 }
 
 .success {
-    background: #16351f;
-    color: #5ce477;
-    padding: 15px;
-    border-radius: 14px;
     margin: 15px 18px;
+    padding: 15px;
+    background: #14331d;
+    color: #5ce477;
+    border-radius: 14px;
     text-align: center;
 }
 
-/* DESKTOP */
-
-@media (min-width: 700px) {
-    body {
-        background: #05080b;
-    }
-
-    .app {
-        background: #0b0f14;
-        box-shadow: 0 0 50px rgba(0,0,0,.4);
-    }
-}
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
-<!-- ================= INICIO ================= -->
+
+<!-- ==================================================
+     INICIO
+================================================== -->
 
 <div id="homeScreen" class="screen active">
 
 <header>
-    <div>
-        <div class="logo">GYM TRACKER</div>
-        <div class="week" id="weekLabel"></div>
+
+    <div class="logo">
+        GYM TRACKER
     </div>
+
+    <div class="week" id="weekLabel"></div>
+
 </header>
 
+
 <div class="summary">
-    <div class="summary-item">
+
+    <div>
         <span>Series realizadas</span>
         <strong id="totalDone">0</strong>
     </div>
 
-    <div class="summary-item">
+    <div>
         <span>Series restantes</span>
         <strong id="totalRemaining">0</strong>
     </div>
+
 </div>
+
 
 <div class="content">
 
-<div class="section-title">
-    Grupos musculares
+    <div class="section-title">
+        Grupos musculares
+    </div>
+
+    <div id="muscleList"></div>
+
+    <button
+        class="primary-btn"
+        id="homeAddExercise">
+        ＋ Agregar ejercicio
+    </button>
+
 </div>
 
-<div id="muscleList"></div>
-
-<button class="primary-btn" onclick="openAddExercise()">
-    ＋ Agregar ejercicio
-</button>
-
-</div>
 </div>
 
 
-<!-- ================= AGREGAR EJERCICIO ================= -->
+
+<!-- ==================================================
+     AGREGAR EJERCICIO
+================================================== -->
 
 <div id="addScreen" class="screen">
 
-<div class="page-header">
-    <button class="back" onclick="showHome()">‹</button>
-    <h2>Agregar ejercicio</h2>
+    <div class="page-header">
+
+        <button
+            class="back"
+            id="backFromAdd">
+            ‹
+        </button>
+
+        <h2>
+            Agregar ejercicio
+        </h2>
+
+    </div>
+
+
+    <div class="form">
+
+        <label>
+            Nombre del ejercicio
+        </label>
+
+        <input
+            id="exerciseName"
+            type="text"
+            placeholder="Ej: Curl de bíceps">
+
+
+        <label>
+            Grupo muscular
+        </label>
+
+        <select id="exerciseMuscle"></select>
+
+
+        <button
+            class="primary-btn"
+            id="saveExerciseBtn">
+
+            Guardar ejercicio
+
+        </button>
+
+    </div>
+
 </div>
 
-<div class="form">
-
-<label>Nombre del ejercicio</label>
-<input id="exerciseName" type="text" placeholder="Ej: Curl de bíceps">
-
-<label>Grupo muscular</label>
-<select id="exerciseMuscle"></select>
-
-<button class="primary-btn" onclick="saveExercise()">
-    Guardar ejercicio
-</button>
-
-</div>
-</div>
 
 
-<!-- ================= GRUPO MUSCULAR ================= -->
+<!-- ==================================================
+     GRUPO MUSCULAR
+================================================== -->
 
 <div id="muscleScreen" class="screen">
 
-<div class="page-header">
-    <button class="back" onclick="showHome()">‹</button>
-    <h2 id="muscleTitle"></h2>
+    <div class="page-header">
+
+        <button
+            class="back"
+            id="backFromMuscle">
+            ‹
+        </button>
+
+        <h2 id="muscleTitle">
+            Bíceps
+        </h2>
+
+    </div>
+
+
+    <div
+        id="exerciseList"
+        class="content">
+    </div>
+
+
+    <div class="content">
+
+        <button
+            class="primary-btn"
+            id="muscleAddExercise">
+
+            ＋ Agregar ejercicio
+
+        </button>
+
+    </div>
+
 </div>
 
-<div id="exerciseList" class="content"></div>
-
-<div class="content">
-<button class="primary-btn" onclick="openAddExercise()">
-    ＋ Agregar ejercicio
-</button>
-</div>
-
-</div>
 
 
-<!-- ================= EJERCICIO ================= -->
+<!-- ==================================================
+     EJERCICIO
+================================================== -->
 
 <div id="exerciseScreen" class="screen">
 
-<div class="page-header">
-    <button class="back" onclick="backToMuscle()">‹</button>
-    <h2 id="exerciseTitle"></h2>
+    <div class="page-header">
+
+        <button
+            class="back"
+            id="backFromExercise">
+
+            ‹
+
+        </button>
+
+        <h2 id="exerciseTitle">
+            Curl de bíceps
+        </h2>
+
+    </div>
+
+
+    <div class="stats-box">
+
+        <div>
+
+            <span>
+                Objetivo semanal
+            </span>
+
+            <strong id="exerciseGoal">
+                12
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Completadas
+            </span>
+
+            <strong id="exerciseDone">
+                0
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Faltan
+            </span>
+
+            <strong
+                class="green"
+                id="exerciseRemaining">
+                12
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="set-header">
+
+        <div>Serie</div>
+        <div>Reps</div>
+        <div>Peso kg</div>
+        <div></div>
+
+    </div>
+
+
+    <div id="setsList"></div>
+
+
+    <div class="total-box">
+
+        Total de series:
+
+        <strong id="setTotal">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="content">
+
+        <button
+            class="primary-btn"
+            id="addSetBtn">
+
+            ＋ Agregar serie
+
+        </button>
+
+
+        <button
+            class="primary-btn"
+            id="saveSetsBtn">
+
+            💾 Guardar entrenamiento
+
+        </button>
+
+    </div>
+
+
+    <div id="successMessage"></div>
+
 </div>
 
-<div class="stats-box">
-
-<div>
-    <span>Objetivo semanal</span>
-    <strong id="exerciseGoal">0</strong>
-</div>
-
-<div>
-    <span>Completadas</span>
-    <strong id="exerciseDone">0</strong>
-</div>
-
-<div>
-    <span>Faltan</span>
-    <strong class="remaining" id="exerciseRemaining">0</strong>
-</div>
 
 </div>
 
-<div class="set-header">
-    <div>Serie</div>
-    <div>Reps</div>
-    <div>Peso kg</div>
-    <div></div>
-</div>
-
-<div id="setsList"></div>
-
-<div class="total-box">
-    Total de series: <strong id="setTotal">0</strong>
-</div>
-
-<div class="content">
-
-<button class="primary-btn" onclick="addSet()">
-    ＋ Agregar serie
-</button>
-
-<button class="primary-btn" onclick="saveSets()">
-    💾 Guardar entrenamiento
-</button>
-
-</div>
-
-<div id="successMessage"></div>
-
-</div>
-
-</div>
 
 
 <script>
 
-/* =====================================================
-   CONFIGURACIÓN
-===================================================== */
+/* ==================================================
+   OBJETIVOS SEMANALES
+================================================== */
 
 const muscleGoals = {
 
@@ -567,6 +649,11 @@ const muscleGoals = {
 
 };
 
+
+/* ==================================================
+   ICONOS
+================================================== */
+
 const muscleIcons = {
 
     "Pecho": "🫀",
@@ -582,6 +669,11 @@ const muscleIcons = {
     "Pantorrillas": "🔷"
 
 };
+
+
+/* ==================================================
+   COLORES
+================================================== */
 
 const colors = {
 
@@ -600,23 +692,30 @@ const colors = {
 };
 
 
-/* =====================================================
-   DATOS
-===================================================== */
+/* ==================================================
+   DATOS GUARDADOS
+================================================== */
 
 let exercises =
-    JSON.parse(localStorage.getItem("gymExercises")) || [];
+    JSON.parse(
+        localStorage.getItem("gymExercises")
+    ) || [];
+
 
 let workouts =
-    JSON.parse(localStorage.getItem("gymWorkouts")) || {};
+    JSON.parse(
+        localStorage.getItem("gymWorkouts")
+    ) || {};
+
 
 let currentMuscle = null;
+
 let currentExercise = null;
 
 
-/* =====================================================
-   SEMANA
-===================================================== */
+/* ==================================================
+   SEMANA ACTUAL
+================================================== */
 
 function getWeekKey() {
 
@@ -630,242 +729,335 @@ function getWeekKey() {
         )
     );
 
-    const day = date.getUTCDay() || 7;
+    const day =
+        date.getUTCDay() || 7;
 
     date.setUTCDate(
         date.getUTCDate() + 4 - day
     );
 
-    const yearStart = new Date(
-        Date.UTC(
-            date.getUTCFullYear(),
-            0,
-            1
-        )
-    );
+    const yearStart =
+        new Date(
+            Date.UTC(
+                date.getUTCFullYear(),
+                0,
+                1
+            )
+        );
 
-    const week = Math.ceil(
-        (((date - yearStart) / 86400000) + 1) / 7
-    );
+    const week =
+        Math.ceil(
+            (
+                (
+                    (date - yearStart)
+                    / 86400000
+                ) + 1
+            ) / 7
+        );
 
-    return `${date.getUTCFullYear()}-W${week}`;
+    return (
+        date.getUTCFullYear()
+        + "-W"
+        + week
+    );
 }
 
-const currentWeek = getWeekKey();
+
+const currentWeek =
+    getWeekKey();
 
 
-function updateWeekLabel() {
-
-    document.getElementById("weekLabel").textContent =
-        "Semana " + currentWeek;
-
-}
+document.getElementById(
+    "weekLabel"
+).textContent =
+    "Semana " + currentWeek;
 
 
-/* =====================================================
-   NAVEGACIÓN
-===================================================== */
+/* ==================================================
+   CAMBIAR PANTALLA
+================================================== */
 
 function showScreen(id) {
 
-    document.querySelectorAll(".screen")
-        .forEach(screen => screen.classList.remove("active"));
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
 
-    document.getElementById(id)
+            screen.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    document
+        .getElementById(id)
         .classList.add("active");
 
 }
 
 
-function showHome() {
-
-    updateHome();
-    showScreen("homeScreen");
-
-}
-
-
-function backToMuscle() {
-
-    openMuscle(currentMuscle);
-
-}
-
-
-/* =====================================================
+/* ==================================================
    INICIO
-===================================================== */
+================================================== */
 
 function updateHome() {
 
     const list =
-        document.getElementById("muscleList");
+        document.getElementById(
+            "muscleList"
+        );
+
 
     list.innerHTML = "";
 
+
     let totalDone = 0;
+
     let totalGoal = 0;
 
-    Object.keys(muscleGoals).forEach(muscle => {
 
-        const goal = muscleGoals[muscle];
+    Object.keys(muscleGoals)
+        .forEach(muscle => {
 
-        const done = getMuscleSeries(muscle);
 
-        const percentage =
-            Math.min((done / goal) * 100, 100);
+            const goal =
+                muscleGoals[muscle];
 
-        totalDone += done;
-        totalGoal += goal;
 
-        const card =
-        document.createElement("div");
+            const done =
+                getMuscleSeries(
+                    muscle
+                );
 
-        card.className = "muscle-card";
 
-        card.onclick = () =>
-            openMuscle(muscle);
+            const percentage =
+                Math.min(
+                    (done / goal) * 100,
+                    100
+                );
 
-        card.innerHTML = `
 
-            <div class="muscle-top">
+            totalDone += done;
 
-                <div class="muscle-name">
+            totalGoal += goal;
 
-                    <div
-                        class="icon"
-                        style="color:${colors[muscle]}"
-                    >
-                        ${muscleIcons[muscle]}
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "muscle-card";
+
+
+            card.innerHTML = `
+
+                <div class="muscle-top">
+
+                    <div class="muscle-name">
+
+                        <div
+                            class="icon"
+                            style="
+                                color:${colors[muscle]}
+                            "
+                        >
+                            ${muscleIcons[muscle]}
+                        </div>
+
+                        ${muscle}
+
                     </div>
 
-                    ${muscle}
+
+                    <div class="muscle-count">
+
+                        ${done} / ${goal} series
+
+                    </div>
 
                 </div>
 
-                <div class="muscle-count">
 
-                    ${done} / ${goal} series
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="
+                            width:${percentage}%;
+                            background:${colors[muscle]}
+                        "
+                    ></div>
 
                 </div>
 
-            </div>
 
-            <div class="progress">
+                <div class="progress-text">
 
-                <div
-                    class="progress-bar"
-                    style="
-                        width:${percentage}%;
-                        background:${colors[muscle]}
-                    "
-                ></div>
+                    ${Math.round(
+                        percentage
+                    )}%
 
-            </div>
+                </div>
 
-            <div class="progress-text">
+            `;
 
-                ${Math.round(percentage)}%
 
-            </div>
-        `;
+            card.addEventListener(
+                "click",
+                function() {
 
-        list.appendChild(card);
+                    openMuscle(
+                        muscle
+                    );
 
-    });
+                }
+            );
 
-    document.getElementById("totalDone")
-        .textContent = totalDone;
 
-    document.getElementById("totalRemaining")
-        .textContent =
-            Math.max(totalGoal - totalDone, 0);
+            list.appendChild(card);
+
+        });
+
+
+    document.getElementById(
+        "totalDone"
+    ).textContent =
+        totalDone;
+
+
+    document.getElementById(
+        "totalRemaining"
+    ).textContent =
+        Math.max(
+            totalGoal - totalDone,
+            0
+        );
 
 }
 
 
-/* =====================================================
-   SERIES DE UN MÚSCULO
-===================================================== */
+/* ==================================================
+   SERIES DE UN MUSCULO
+================================================== */
 
 function getMuscleSeries(muscle) {
 
     let total = 0;
 
+
     exercises
-        .filter(e => e.muscle === muscle)
+        .filter(
+            exercise =>
+                exercise.muscle === muscle
+        )
         .forEach(exercise => {
 
-            const data =
-                workouts[currentWeek]?.[exercise.id];
 
-            if (data) {
+            const sets =
+                workouts[currentWeek]
+                ?.[
+                    exercise.id
+                ] || [];
 
-                total += data.length;
 
-            }
+            total += sets.length;
 
         });
+
 
     return total;
 
 }
 
 
-/* =====================================================
-   AGREGAR EJERCICIO
-===================================================== */
+/* ==================================================
+   ABRIR AGREGAR EJERCICIO
+================================================== */
 
 function openAddExercise() {
 
     const select =
-        document.getElementById("exerciseMuscle");
+        document.getElementById(
+            "exerciseMuscle"
+        );
+
 
     select.innerHTML = "";
 
-    Object.keys(muscleGoals).forEach(muscle => {
 
-        const option =
-            document.createElement("option");
+    Object.keys(muscleGoals)
+        .forEach(muscle => {
 
-        option.value = muscle;
-        option.textContent = muscle;
+            const option =
+                document.createElement(
+                    "option"
+                );
 
-        select.appendChild(option);
+            option.value =
+                muscle;
 
-    });
+            option.textContent =
+                muscle;
+
+            select.appendChild(
+                option
+            );
+
+        });
+
 
     if (currentMuscle) {
 
-        select.value = currentMuscle;
+        select.value =
+            currentMuscle;
 
     }
 
-    document.getElementById("exerciseName")
-        .value = "";
 
-    showScreen("addScreen");
+    document.getElementById(
+        "exerciseName"
+    ).value = "";
+
+
+    showScreen(
+        "addScreen"
+    );
 
 }
 
 
+/* ==================================================
+   GUARDAR EJERCICIO
+================================================== */
+
 function saveExercise() {
 
     const name =
-        document.getElementById("exerciseName")
-        .value.trim();
+        document.getElementById(
+            "exerciseName"
+        ).value.trim();
+
 
     const muscle =
-        document.getElementById("exerciseMuscle")
-        .value;
+        document.getElementById(
+            "exerciseMuscle"
+        ).value;
+
 
     if (!name) {
 
-        alert("Escribí el nombre del ejercicio.");
+        alert(
+            "Escribí el nombre del ejercicio."
+        );
 
         return;
 
     }
+
 
     const exercise = {
 
@@ -877,288 +1069,246 @@ function saveExercise() {
 
     };
 
-    exercises.push(exercise);
+
+    exercises.push(
+        exercise
+    );
+
 
     localStorage.setItem(
         "gymExercises",
-        JSON.stringify(exercises)
+        JSON.stringify(
+            exercises
+        )
     );
 
-    currentMuscle = muscle;
 
-    openMuscle(muscle);
+    currentMuscle =
+        muscle;
+
+
+    openMuscle(
+        muscle
+    );
 
 }
 
 
-/* =====================================================
-   GRUPO MUSCULAR
-===================================================== */
+/* ==================================================
+   ABRIR MUSCULO
+================================================== */
 
 function openMuscle(muscle) {
 
-    currentMuscle = muscle;
+    currentMuscle =
+        muscle;
 
-    document.getElementById("muscleTitle")
-        .textContent = muscle;
+
+    document.getElementById(
+        "muscleTitle"
+    ).textContent =
+        muscle;
+
 
     const list =
-        document.getElementById("exerciseList");
+        document.getElementById(
+            "exerciseList"
+        );
+
 
     list.innerHTML = "";
 
+
     const muscleExercises =
         exercises.filter(
-            e => e.muscle === muscle
+            exercise =>
+                exercise.muscle === muscle
         );
 
-    if (muscleExercises.length === 0) {
+
+    if (
+        muscleExercises.length === 0
+    ) {
 
         list.innerHTML = `
+
             <div class="empty">
-                Todavía no agregaste ejercicios
-                para ${muscle}.
+
+                Todavía no agregaste
+                ejercicios para
+                ${muscle}.
+
             </div>
+
         `;
 
     }
 
-    muscleExercises.forEach(exercise => {
 
-        const done =
-            workouts[currentWeek]?.[exercise.id]
-            ?.length || 0;
+    muscleExercises.forEach(
+        exercise => {
 
-        const card =
-            document.createElement("div");
 
-        card.className = "exercise-card";
+            const done =
+                workouts[currentWeek]
+                ?.[
+                    exercise.id
+                ]?.length || 0;
 
-        card.onclick = () =>
-            openExercise(exercise.id);
 
-        card.innerHTML = `
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-            <div class="exercise-top">
 
-                <div class="exercise-name">
+            card.className =
+                "exercise-card";
 
-                    ${exercise.name}
+
+            card.innerHTML = `
+
+                <div class="exercise-top">
+
+                    <div class="exercise-name">
+
+                        ${exercise.name}
+
+                    </div>
+
+
+                    <div class="exercise-series">
+
+                        ${done} series
+
+                    </div>
 
                 </div>
 
-                <div class="exercise-series">
+            `;
 
-                    ${done} series
 
-                </div>
+            card.addEventListener(
+                "click",
+                function() {
 
-            </div>
+                    openExercise(
+                        exercise.id
+                    );
 
-        `;
+                }
+            );
 
-        list.appendChild(card);
 
-    });
+            list.appendChild(
+                card
+            );
 
-    showScreen("muscleScreen");
+        }
+    );
+
+
+    showScreen(
+        "muscleScreen"
+    );
 
 }
 
 
-/* =====================================================
-   EJERCICIO
-===================================================== */
+/* ==================================================
+   ABRIR EJERCICIO
+================================================== */
 
 function openExercise(id) {
 
-    currentExercise = id;
+    currentExercise =
+        id;
+
 
     const exercise =
-        exercises.find(e => e.id === id);
+        exercises.find(
+            e => e.id === id
+        );
 
-    document.getElementById("exerciseTitle")
-        .textContent = exercise.name;
+
+    document.getElementById(
+        "exerciseTitle"
+    ).textContent =
+        exercise.name;
+
 
     const goal =
-        muscleGoals[exercise.muscle];
+        muscleGoals[
+            exercise.muscle
+        ];
+
 
     const sets =
-        workouts[currentWeek]?.[id] || [];
+        workouts[currentWeek]
+        ?.[
+            id
+        ] || [];
 
-    document.getElementById("exerciseGoal")
-        .textContent = goal;
 
-    document.getElementById("exerciseDone")
-        .textContent = sets.length;
+    document.getElementById(
+        "exerciseGoal"
+    ).textContent =
+        goal;
 
-    document.getElementById("exerciseRemaining")
-        .textContent =
-            Math.max(goal - getMuscleSeries(exercise.muscle), 0);
 
-    renderSets(sets);
+    document.getElementById(
+        "exerciseDone"
+    ).textContent =
+        sets.length;
 
-    document.getElementById("successMessage")
-        .innerHTML = "";
 
-    showScreen("exerciseScreen");
+    document.getElementById(
+        "exerciseRemaining"
+    ).textContent =
+        Math.max(
+            goal -
+            getMuscleSeries(
+                exercise.muscle
+            ),
+            0
+        );
+
+
+    renderSets(
+        sets
+    );
+
+
+    document.getElementById(
+        "successMessage"
+    ).innerHTML = "";
+
+
+    showScreen(
+        "exerciseScreen"
+    );
 
 }
 
 
-/* =====================================================
-   SERIES
-===================================================== */
+/* ==================================================
+   MOSTRAR SERIES
+================================================== */
 
 function renderSets(sets) {
 
     const list =
-        document.getElementById("setsList");
+        document.getElementById(
+            "setsList"
+        );
+
 
     list.innerHTML = "";
 
-    sets.forEach((set, index) => {
 
-        const row =
-            document.createElement("div");
-
-        row.className = "set-row";
-
-        row.innerHTML = `
-
-            <div class="set-number">
-                ${index + 1}
-            </div>
-
-            <input
-                type="number"
-                min="0"
-                placeholder="Reps"
-                value="${set.reps || ""}"
-                data-index="${index}"
-                data-type="reps"
-            >
-
-            <input
-                type="number"
-                min="0"
-                step="0.5"
-                placeholder="Kg"
-                value="${set.weight || ""}"
-                data-index="${index}"
-                data-type="weight"
-            >
-
-            <button
-                class="delete-set"
-                onclick="deleteSet(${index})"
-            >
-                ×
-            </button>
-
-        `;
-
-        list.appendChild(row);
-
-    });
-
-    document.getElementById("setTotal")
-        .textContent = sets.length;
-
-}
+    sets.forEach(
+        (set, index) => {
 
 
-/* =====================================================
-   AGREGAR SERIE
-===================================================== */
-
-function addSet() {
-
-    if (!workouts[currentWeek]) {
-
-        workouts[currentWeek] = {};
-
-    }
-
-    if (!workouts[currentWeek][currentExercise]) {
-
-        workouts[currentWeek][currentExercise] = [];
-
-    }
-
-    workouts[currentWeek][currentExercise]
-        .push({
-
-            reps: "",
-            weight: ""
-
-        });
-
-    saveWorkoutData();
-
-    openExercise(currentExercise);
-
-}
-
-
-/* =====================================================
-   GUARDAR SERIES
-===================================================== */
-
-function saveSets() {
-
-    const inputs =
-        document.querySelectorAll(
-            "#setsList input"
-        );
-
-    const sets =
-        workouts[currentWeek][currentExercise];
-
-    inputs.forEach(input => {
-
-        const index =
-            Number(input.dataset.index);
-
-        const type =
-            input.dataset.type;
-
-        sets[index][type] =
-            input.value;
-
-    });
-
-    saveWorkoutData();
-
-    const exercise =
-        exercises.find(
-            e => e.id === currentExercise
-        );
-
-    const total =
-        getMuscleSeries(exercise.muscle);
-
-    const goal =
-        muscleGoals[exercise.muscle];
-
-    if (total >= goal) {
-
-        document.getElementById("successMessage")
-            .innerHTML = `
-                <div class="success">
-                    ✅ ¡Objetivo semanal de ${exercise.muscle} completado!
-                </div>
-            `;
-
-    } else {
-
-        document.getElementById("successMessage")
-            .innerHTML = `
-                <div class="success">
-                    Te quedan ${goal - total}
-                    series de ${exercise.muscle}.
-                </div>
-            `;
-
-    }
-
+            const row =
+                docume
