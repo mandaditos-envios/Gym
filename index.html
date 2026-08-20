@@ -346,7 +346,6 @@ select:focus {
 </style>
 </head>
 
-
 <body>
 
 <div class="app">
@@ -505,10 +504,10 @@ const colors = {
     "Pantorrillas": "#26b7c7"
 };
 
-// 1. Base fija de ejercicios (acá quedan guardados tus pesos y reps)
+// 1. Base fija de ejercicios
 let exercises = JSON.parse(localStorage.getItem("gymExercises")) || [];
 
-// 2. Registro de qué ejercicios hiciste en cada semana
+// 2. Registro semanal
 let weeklyWorkouts = JSON.parse(localStorage.getItem("gymWorkouts")) || {};
 
 let currentMuscle = null;
@@ -526,6 +525,18 @@ function getWeekKey() {
 
 const currentWeek = getWeekKey();
 document.getElementById("weekLabel").textContent = "Semana " + currentWeek;
+
+// Función segura para obtener el número de series hechas
+function getExerciseDoneCount(exerciseId) {
+    const raw = weeklyWorkouts[currentWeek]?.[exerciseId];
+    if (Array.isArray(raw)) {
+        return raw.length;
+    }
+    if (typeof raw === "number") {
+        return raw;
+    }
+    return 0;
+}
 
 function showScreen(id) {
     document.querySelectorAll(".screen").forEach(screen => {
@@ -547,9 +558,9 @@ function updateHome() {
     let totalGoal = 0;
 
     Object.keys(muscleGoals).forEach(muscle => {
-        const goal = muscleGoals[muscle];
-        const done = getMuscleSeries(muscle);
-        const percentage = Math.min((done / goal) * 100, 100);
+        const goal = Number(muscleGoals[muscle]) || 0;
+        const done = Number(getMuscleSeries(muscle)) || 0;
+        const percentage = goal > 0 ? Math.min((done / goal) * 100, 100) : 0;
 
         totalDone += done;
         totalGoal += goal;
@@ -592,8 +603,7 @@ function getMuscleSeries(muscle) {
     exercises
         .filter(exercise => exercise.muscle === muscle)
         .forEach(exercise => {
-            const done = weeklyWorkouts[currentWeek]?.[exercise.id] || 0;
-            total += done;
+            total += getExerciseDoneCount(exercise.id);
         });
     return total;
 }
@@ -662,7 +672,7 @@ function openMuscle(muscle) {
     }
 
     muscleExercises.forEach(exercise => {
-        const done = weeklyWorkouts[currentWeek]?.[exercise.id] || 0;
+        const done = getExerciseDoneCount(exercise.id);
         const totalSets = (exercise.sets || []).length;
 
         const card = document.createElement("div");
@@ -700,7 +710,7 @@ function openExercise(id) {
     document.getElementById("exerciseTitle").textContent = exercise.name;
 
     const goal = muscleGoals[exercise.muscle];
-    const doneThisWeek = weeklyWorkouts[currentWeek]?.[id] || 0;
+    const doneThisWeek = getExerciseDoneCount(id);
 
     document.getElementById("exerciseGoal").textContent = goal;
     document.getElementById("exerciseDone").textContent = doneThisWeek;
@@ -727,7 +737,7 @@ function renderSets(sets) {
                 type="number"
                 min="0"
                 placeholder="Reps"
-                value="${set.reps || ""}"
+                value="${set.reps !== undefined ? set.reps : ""}"
                 data-index="${index}"
                 data-type="reps"
             >
@@ -736,7 +746,7 @@ function renderSets(sets) {
                 min="0"
                 step="0.5"
                 placeholder="Kg"
-                value="${set.weight || ""}"
+                value="${set.weight !== undefined ? set.weight : ""}"
                 data-index="${index}"
                 data-type="weight"
             >
@@ -784,7 +794,7 @@ function saveSets() {
     // Guardar pesos y repeticiones fijas
     localStorage.setItem("gymExercises", JSON.stringify(exercises));
 
-    // Registrar las series como hechas esta semana
+    // Registrar número entero de series hechas
     if (!weeklyWorkouts[currentWeek]) {
         weeklyWorkouts[currentWeek] = {};
     }
@@ -821,7 +831,7 @@ function deleteSet(index) {
     exercise.sets.splice(index, 1);
     localStorage.setItem("gymExercises", JSON.stringify(exercises));
 
-    if (weeklyWorkouts[currentWeek]?.[currentExercise]) {
+    if (weeklyWorkouts[currentWeek]?.[currentExercise] !== undefined) {
         weeklyWorkouts[currentWeek][currentExercise] = exercise.sets.length;
         localStorage.setItem("gymWorkouts", JSON.stringify(weeklyWorkouts));
     }
