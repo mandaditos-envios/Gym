@@ -29,7 +29,6 @@ button, input, select {
     padding-bottom: 30px;
 }
 
-/* HEADER */
 header {
     padding: 25px 18px 15px;
 }
@@ -45,7 +44,6 @@ header {
     margin-top: 5px;
 }
 
-/* RESUMEN */
 .summary {
     margin: 10px 16px 20px;
     padding: 18px;
@@ -66,7 +64,6 @@ header {
     font-size: 22px;
 }
 
-/* CONTENIDO */
 .content {
     padding: 0 16px;
 }
@@ -77,7 +74,6 @@ header {
     margin-bottom: 14px;
 }
 
-/* MUSCULOS */
 .muscle-card {
     background: #151b23;
     padding: 16px;
@@ -135,7 +131,6 @@ header {
     margin-top: 5px;
 }
 
-/* BOTONES */
 .primary-btn {
     width: 100%;
     padding: 15px;
@@ -153,7 +148,6 @@ header {
     transform: scale(.98);
 }
 
-/* PANTALLAS */
 .screen {
     display: none;
 }
@@ -162,7 +156,6 @@ header {
     display: block;
 }
 
-/* HEADER INTERNO */
 .page-header {
     display: flex;
     align-items: center;
@@ -185,7 +178,6 @@ header {
     cursor: pointer;
 }
 
-/* FORMULARIO */
 .form {
     padding: 0 18px;
 }
@@ -211,7 +203,6 @@ input:focus, select:focus {
     border-color: #2878f0;
 }
 
-/* EJERCICIOS */
 .exercise-card {
     background: #151b23;
     padding: 17px;
@@ -234,7 +225,6 @@ input:focus, select:focus {
     font-size: 13px;
 }
 
-/* ESTADISTICAS EJERCICIO */
 .stats-box {
     background: #151b23;
     margin: 0 18px 18px;
@@ -260,7 +250,6 @@ input:focus, select:focus {
     color: #55d66f;
 }
 
-/* SERIES */
 .set-header, .set-row {
     display: grid;
     grid-template-columns: 36px 1fr 1fr 44px 28px;
@@ -317,7 +306,6 @@ input:focus, select:focus {
     cursor: pointer;
 }
 
-/* TOTAL */
 .total-box {
     margin: 15px 18px;
     padding: 15px;
@@ -326,7 +314,6 @@ input:focus, select:focus {
     text-align: center;
 }
 
-/* MENSAJES */
 .empty {
     text-align: center;
     color: #8993a1;
@@ -466,10 +453,30 @@ const colors = {
     "Aductores": "#ff8b22", "Abductores": "#ff8b22", "Pantorrillas": "#26b7c7"
 };
 
-// Configuración fija de ejercicios con sus repeticiones/peso
+/* ==================================================
+   RECUPERACIÓN Y MIGRACIÓN AUTOMÁTICA
+================================================== */
 let exercises = JSON.parse(localStorage.getItem("gymExercises")) || [];
-// Registro semanal de series completadas { "YYYY-WW": { exerciseId: [0, 1] } }
+let oldWorkouts = JSON.parse(localStorage.getItem("gymWorkouts")) || {};
 let weeklyLog = JSON.parse(localStorage.getItem("gymWeeklyLog")) || {};
+
+// Si tenías datos guardados en el formato anterior, se recuperan acá
+exercises.forEach(ex => {
+    if (!ex.sets || ex.sets.length === 0) {
+        let restoredSets = null;
+        Object.keys(oldWorkouts).forEach(week => {
+            if (oldWorkouts[week]?.[ex.id] && oldWorkouts[week][ex.id].length > 0) {
+                restoredSets = oldWorkouts[week][ex.id];
+            }
+        });
+        ex.sets = restoredSets || [
+            { reps: 10, weight: 0 },
+            { reps: 10, weight: 0 },
+            { reps: 10, weight: 0 }
+        ];
+    }
+});
+localStorage.setItem("gymExercises", JSON.stringify(exercises));
 
 let currentMuscle = null;
 let currentExercise = null;
@@ -738,7 +745,6 @@ function deleteSet(index) {
 
     exercise.sets.splice(index, 1);
 
-    // Ajustar registros marcados de la semana actual
     if (weeklyLog[currentWeek]?.[currentExercise]) {
         weeklyLog[currentWeek][currentExercise] = weeklyLog[currentWeek][currentExercise]
             .filter(i => i !== index)
@@ -773,12 +779,4 @@ document.getElementById("backFromAdd").addEventListener("click", () => {
     }
 });
 
-document.getElementById("backFromMuscle").addEventListener("click", showHome);
-document.getElementById("backFromExercise").addEventListener("click", () => openMuscle(currentMuscle));
-
-// INICIAR
-updateHome();
-</script>
-
-</body>
-</html>
+document.getElementById("backFromMuscle").addEventListene
