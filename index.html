@@ -504,10 +504,7 @@ const colors = {
     "Pantorrillas": "#26b7c7"
 };
 
-// 1. Base fija de ejercicios
 let exercises = JSON.parse(localStorage.getItem("gymExercises")) || [];
-
-// 2. Registro semanal
 let weeklyWorkouts = JSON.parse(localStorage.getItem("gymWorkouts")) || {};
 
 let currentMuscle = null;
@@ -526,7 +523,6 @@ function getWeekKey() {
 const currentWeek = getWeekKey();
 document.getElementById("weekLabel").textContent = "Semana " + currentWeek;
 
-// Función segura para obtener el número de series hechas
 function getExerciseDoneCount(exerciseId) {
     const raw = weeklyWorkouts[currentWeek]?.[exerciseId];
     if (Array.isArray(raw)) {
@@ -641,9 +637,9 @@ function saveExercise() {
         name: name,
         muscle: muscle,
         sets: [
-            { reps: "10", weight: "0" },
-            { reps: "10", weight: "0" },
-            { reps: "10", weight: "0" }
+            { reps: "", weight: "" },
+            { reps: "", weight: "" },
+            { reps: "", weight: "" }
         ]
     };
 
@@ -791,10 +787,8 @@ function saveSets() {
         }
     });
 
-    // Guardar pesos y repeticiones fijas
     localStorage.setItem("gymExercises", JSON.stringify(exercises));
 
-    // Registrar número entero de series hechas
     if (!weeklyWorkouts[currentWeek]) {
         weeklyWorkouts[currentWeek] = {};
     }
