@@ -759,12 +759,31 @@ function renderSets(sets) {
     document.getElementById("setTotal").textContent = sets.length;
 }
 
+// Función auxiliar para leer los inputs actuales de la pantalla
+function syncCurrentInputs() {
+    const inputs = document.querySelectorAll("#setsList input");
+    const exercise = exercises.find(e => e.id === currentExercise);
+    if (!exercise || !exercise.sets) return;
+
+    inputs.forEach(input => {
+        const index = Number(input.dataset.index);
+        const type = input.dataset.type;
+        if (exercise.sets[index]) {
+            exercise.sets[index][type] = input.value;
+        }
+    });
+}
+
 function addSet() {
     const exercise = exercises.find(e => e.id === currentExercise);
     if (!exercise) return;
 
     if (!exercise.sets) exercise.sets = [];
 
+    // Guarda primero lo que el usuario haya escrito en pantalla
+    syncCurrentInputs();
+
+    // Agrega la nueva fila vacía
     exercise.sets.push({
         reps: "",
         weight: ""
@@ -775,17 +794,10 @@ function addSet() {
 }
 
 function saveSets() {
-    const inputs = document.querySelectorAll("#setsList input");
     const exercise = exercises.find(e => e.id === currentExercise);
     if (!exercise) return;
 
-    inputs.forEach(input => {
-        const index = Number(input.dataset.index);
-        const type = input.dataset.type;
-        if (exercise.sets[index]) {
-            exercise.sets[index][type] = input.value;
-        }
-    });
+    syncCurrentInputs();
 
     localStorage.setItem("gymExercises", JSON.stringify(exercises));
 
@@ -821,6 +833,8 @@ function deleteSet(index) {
 
     const exercise = exercises.find(e => e.id === currentExercise);
     if (!exercise) return;
+
+    syncCurrentInputs();
 
     exercise.sets.splice(index, 1);
     localStorage.setItem("gymExercises", JSON.stringify(exercises));
