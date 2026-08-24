@@ -424,7 +424,7 @@ select:focus {
     <div class="stats-box">
         <div>
             <span>Objetivo semanal</span>
-            <strong id="exerciseGoal">12</strong>
+            <strong id="exerciseGoal">16</strong>
         </div>
         <div>
             <span>Completadas</span>
@@ -432,7 +432,7 @@ select:focus {
         </div>
         <div>
             <span>Faltan</span>
-            <strong class="green" id="exerciseRemaining">12</strong>
+            <strong class="green" id="exerciseRemaining">16</strong>
         </div>
     </div>
 
@@ -462,18 +462,19 @@ select:focus {
 
 <script>
 
+// Rangos de series semanales actualizados (se toma el límite máximo como meta)
 const muscleGoals = {
-    "Pecho": 14,
-    "Espalda": 16,
-    "Hombros": 12,
-    "Bíceps": 12,
-    "Tríceps": 12,
-    "Cuádriceps": 12,
-    "Isquios": 10,
-    "Glúteos": 10,
-    "Aductores": 6,
-    "Abductores": 6,
-    "Pantorrillas": 10
+    "Pecho": 16,
+    "Espalda": 18,
+    "Hombros": 16,
+    "Bíceps": 14,
+    "Tríceps": 14,
+    "Cuádriceps": 16,
+    "Isquiosurales": 14,
+    "Glúteos": 14,
+    "Gemelos": 15,
+    "Aductores": 12,
+    "Abductores": 12
 };
 
 const muscleIcons = {
@@ -483,11 +484,11 @@ const muscleIcons = {
     "Bíceps": "💪",
     "Tríceps": "🟣",
     "Cuádriceps": "🦵",
-    "Isquios": "🦵",
+    "Isquiosurales": "🦵",
     "Glúteos": "🍑",
+    "Gemelos": "🔷",
     "Aductores": "🟠",
-    "Abductores": "🟠",
-    "Pantorrillas": "🔷"
+    "Abductores": "🟠"
 };
 
 const colors = {
@@ -497,11 +498,11 @@ const colors = {
     "Bíceps": "#4bd15f",
     "Tríceps": "#a855f7",
     "Cuádriceps": "#ff7a18",
-    "Isquios": "#ff7a18",
+    "Isquiosurales": "#ff7a18",
     "Glúteos": "#ff4f9a",
+    "Gemelos": "#26b7c7",
     "Aductores": "#ff8b22",
-    "Abductores": "#ff8b22",
-    "Pantorrillas": "#26b7c7"
+    "Abductores": "#ff8b22"
 };
 
 let exercises = JSON.parse(localStorage.getItem("gymExercises")) || [];
@@ -759,7 +760,6 @@ function renderSets(sets) {
     document.getElementById("setTotal").textContent = sets.length;
 }
 
-// Función auxiliar para leer los inputs actuales de la pantalla
 function syncCurrentInputs() {
     const inputs = document.querySelectorAll("#setsList input");
     const exercise = exercises.find(e => e.id === currentExercise);
@@ -780,10 +780,8 @@ function addSet() {
 
     if (!exercise.sets) exercise.sets = [];
 
-    // Guarda primero lo que el usuario haya escrito en pantalla
     syncCurrentInputs();
 
-    // Agrega la nueva fila vacía
     exercise.sets.push({
         reps: "",
         weight: ""
